@@ -19462,11 +19462,18 @@
 
 	module.exports = {
 		"name": "react-component-template",
-		"version": "0.0.0",
+		"version": "0.1.1",
 		"description": "React component",
 		"main": "lib/index.js",
+		"config": {
+			"component": "ReactComponentTemplate"
+		},
 		"scripts": {
-			"start": "p-s"
+			"start": "p-s",
+			"test": "npm start test",
+			"precommit": "npm start precommit",
+			"prepush": "npm start prepush",
+			"postversion": "npm start postversion"
 		},
 		"repository": {
 			"type": "git",
@@ -19506,7 +19513,6 @@
 			"json-loader": "0.5.4",
 			"nightwatch-autorun": "2.3.1",
 			"p-s": "0.7.1",
-			"parallelshell": "2.0.0",
 			"react": "15.0.2",
 			"react-dom": "15.0.2",
 			"rimraf": "2.5.2",
