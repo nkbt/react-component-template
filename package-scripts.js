@@ -33,12 +33,12 @@ exports.scripts = {
   postversion: 'git push --follow-tags',
   ci: {
     lint: [
-      'eslint --debug . --format tap | tap-xunit > ${CIRCLE_TEST_REPORTS}/lint.xml',
-      'test ${PIPESTATUS[0]} -eq 0'
+      'eslint --debug . --format tap > ${CIRCLE_ARTIFACTS}/lint.tap',
+      'cat ${CIRCLE_ARTIFACTS}/lint.tap | tap-xunit > ${CIRCLE_TEST_REPORTS}/lint.xml'
     ].join(' && '),
     test: [
-      'NODE_ENV=test babel-node test | tap-xunit > ${CIRCLE_TEST_REPORTS}/test.xml',
-      'test ${PIPESTATUS[0]} -eq 0'
+      'NODE_ENV=test babel-node test > ${CIRCLE_ARTIFACTS}/test.tap',
+      'cat ${CIRCLE_ARTIFACTS}/test.tap | tap-xunit > ${CIRCLE_TEST_REPORTS}/test.xml'
     ].join(' && '),
     cov: 'NODE_ENV=test babel-node node_modules/isparta/bin/isparta cover ' +
     '     --report text --report lcov --verbose --dir ${CIRCLE_ARTIFACTS}/coverage test/index.js',
