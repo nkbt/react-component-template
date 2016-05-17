@@ -1,30 +1,33 @@
+const pathTo = require('path').join.bind(null, process.cwd());
+
 exports.scripts = {
   dev: 'cross-env NODE_ENV=development webpack-dev-server',
   ghPages: [
     'npm start -- build.ghPages',
-    'gh-pages --dist example'
+    `gh-pages --dist ${pathTo('example')}`
   ].join(' && '),
   build: {
     default: [
-      'rimraf lib example build',
+      `rimraf ${pathTo('lib')} ${pathTo('example')} ${pathTo('build')}`,
       'npm start -- --parallel build.lib,build.ghPages,build.dist,build.min'
     ].join(' && '),
     lib: 'cross-env NODE_ENV=production' +
-    '     babel src --out-dir lib --source-maps --ignore src/example',
+    `     babel ${pathTo('src')} --out-dir ${pathTo('lib')}` +
+    `     --source-maps --ignore ${pathTo('src', 'example')}`,
     ghPages: 'cross-env NODE_ENV=production BUILD=ghPages webpack',
     dist: 'cross-env NODE_ENV=production BUILD=dist webpack',
     min: 'cross-env NODE_ENV=production BUILD=min webpack'
   },
   prepublish: 'npm start -- --parallel build.lib,build.dist,build.min',
   test: {
-    default: 'cross-env NODE_ENV=test babel-node test',
+    default: `cross-env NODE_ENV=test babel-node ${pathTo('test')}`,
     dev: 'npm start -- test | tap-nyan',
     cov: 'cross-env NODE_ENV=test' +
     '     babel-node node_modules/isparta/bin/isparta cover' +
-    '     --report text --report html --report lcov --dir reports/coverage test',
+    `     --report text --report html --report lcov --dir reports/coverage ${pathTo('test')}`,
     e2e: 'cross-env NODE_ENV=development nightwatch-autorun'
   },
-  lint: 'eslint --cache .',
+  lint: `eslint --cache ${pathTo('.')}`,
   precommit: 'npm start -- lint',
   prepush: 'npm start -- test',
   postversion: 'git push --follow-tags',
