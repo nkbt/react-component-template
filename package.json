@@ -4,7 +4,7 @@
   "description": "React component",
   "main": "lib/index.js",
   "scripts": {
-    "start": "COMPONENT_NAME=ReactComponentTemplate p-s",
+    "start": "cross-env COMPONENT_NAME=ReactComponentTemplate p-s",
     "test": "npm start test",
     "precommit": "npm start precommit",
     "prepush": "npm start prepush",
