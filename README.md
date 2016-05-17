@@ -29,20 +29,48 @@ Developing and publishing multiple React components requires a lot of work to ke
 
 ## Usage
 
-1. Add as remote
+1. Install
 
   ```sh
-  git remote add template git@github.com:nkbt/react-component-template.git
+  npm install --save-dev p-s react-component-template
   ```
 
-2. Merge to existing repo
+2. Set npm scripts in `package.json`
 
-  ```sh
-  git merge --no-ff template/master
+  ```json
+  {
+    "scripts": {
+      "start": "COMPONENT_NAME=<ProjectName> p-s --config node_modules/react-component-template/package-scripts.js -s",
+      "test": "npm start test",
+      "precommit": "npm start precommit",
+      "prepush": "npm start prepush",
+      "postversion": "npm start postversion",
+      "prepublish": "npm start prepublish"
+    }
+  }
   ```
 
-3. Fix conflicts
-4. If update needed, repeat
+3. Create `webpack.config.js`
+
+  ```js
+  'use strict';
+
+  module.exports = require('react-component-template/webpack.config');
+  ```
+
+4. Create `.eslintrc`
+
+  ```json
+  {
+    "extends": "./node_modules/react-component-template/.eslintrc"
+  }
+  ```
+
+5. Other files
+
+  ```js
+  // TODO: better create generator
+  ```
 
 
 # Template-based component features
