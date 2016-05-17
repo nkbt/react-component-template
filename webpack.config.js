@@ -4,6 +4,11 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const COMPONENT_NAME = process.env.COMPONENT_NAME;
+
+if (!COMPONENT_NAME) {
+  throw Error('COMPONENT_NAME is required');
+}
 
 
 const loaders = [
@@ -80,7 +85,7 @@ const dist = {
   output: {
     filename: `${require('./package.json').name}.js`,
     path: path.resolve('build'),
-    library: 'ReactComponentTemplate',
+    library: COMPONENT_NAME,
     libraryTarget: 'umd'
   },
   plugins: [definePlugin],
@@ -99,7 +104,7 @@ const min = {
   output: {
     filename: `${require('./package.json').name}.min.js`,
     path: path.resolve('build'),
-    library: 'ReactComponentTemplate',
+    library: COMPONENT_NAME,
     libraryTarget: 'umd'
   },
   plugins: [

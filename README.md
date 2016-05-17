@@ -93,11 +93,11 @@ then include as
 ## Demo
 
 Publishing on `gh-pages`:
-- do a build
-- allow `/example` in `.gitignore`
-- commit and push to `gh-pages`
+```sh
+npm start gh-pages
+```
 
-[http://nkbt.github.io/react-component-template/example](http://nkbt.github.io/react-component-template/example)
+[http://nkbt.github.io/react-component-template](http://nkbt.github.io/react-component-template)
 
 ## Codepen demo
 
