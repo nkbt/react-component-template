@@ -1,13 +1,13 @@
 exports.scripts = {
   dev: 'cross-env NODE_ENV=development webpack-dev-server',
   ghPages: [
-    'p-s build.ghPages',
+    'npm start -- build.ghPages',
     'gh-pages --dist example'
   ].join(' && '),
   build: {
     default: [
       'rimraf lib example build',
-      'p-s --parallel build.lib,build.ghPages,build.dist,build.min'
+      'npm start -- --parallel build.lib,build.ghPages,build.dist,build.min'
     ].join(' && '),
     lib: 'cross-env NODE_ENV=production' +
     '     babel src --out-dir lib --source-maps --ignore src/example',
@@ -15,18 +15,18 @@ exports.scripts = {
     dist: 'cross-env NODE_ENV=production BUILD=dist webpack',
     min: 'cross-env NODE_ENV=production BUILD=min webpack'
   },
-  prepublish: 'p-s --parallel build.lib,build.dist,build.min',
+  prepublish: 'npm start -- --parallel build.lib,build.dist,build.min',
   test: {
     default: 'cross-env NODE_ENV=test babel-node test',
-    dev: 'p-s test | tap-nyan',
+    dev: 'npm start -- test | tap-nyan',
     cov: 'cross-env NODE_ENV=test' +
     '     babel-node node_modules/isparta/bin/isparta cover' +
     '     --report text --report html --report lcov --dir reports/coverage test',
     e2e: 'cross-env NODE_ENV=development nightwatch-autorun'
   },
   lint: 'eslint --cache .',
-  precommit: 'p-s lint',
-  prepush: 'p-s test',
+  precommit: 'npm start -- lint',
+  prepush: 'npm start -- test',
   postversion: 'git push --follow-tags',
   ci: {
     lint: [

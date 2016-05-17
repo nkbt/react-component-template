@@ -6,7 +6,6 @@
   "scripts": {
     "start": "COMPONENT_NAME=ReactComponentTemplate p-s",
     "test": "npm start test",
-    "prepublish": "npm start prepublish",
     "precommit": "npm start precommit",
     "prepush": "npm start prepush",
     "postversion": "npm start postversion"
