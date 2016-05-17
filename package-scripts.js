@@ -4,7 +4,7 @@ exports.scripts = {
   dev: 'cross-env NODE_ENV=development webpack-dev-server',
   ghPages: [
     'npm start -- build.ghPages',
-    `gh-pages --dist ${pathTo('example')}`
+    'gh-pages --dist example'
   ].join(' && '),
   build: {
     default: [
