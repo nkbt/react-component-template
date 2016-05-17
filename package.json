@@ -1,27 +1,17 @@
 {
   "name": "react-component-template",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "React component",
   "main": "lib/index.js",
+  "config": {
+    "component": "ReactComponentTemplate"
+  },
   "scripts": {
-    "pregh-pages": "git fetch origin",
-    "gh-pages": "git checkout gh-pages && git rebase origin/master --force-rebase && npm run build && git add . && git commit --amend --no-edit && git push --force && git checkout master",
-    "build": "parallelshell -w \"npm run build:lib -s\" \"npm run build:ghPages -s\" \"npm run build:dist -s\" \"npm run build:min -s\"",
-    "prebuild": "rimraf lib example build",
-    "build:lib": "cross-env NODE_ENV=production babel src --out-dir lib --source-maps --ignore src/example",
-    "build:ghPages": "cross-env NODE_ENV=production BUILD=ghPages webpack",
-    "build:dist": "cross-env NODE_ENV=production BUILD=dist webpack",
-    "build:min": "cross-env NODE_ENV=production BUILD=min webpack",
-    "prepublish": "parallelshell -w \"npm run build:lib -s\" \"npm run build:dist -s\" \"npm run build:min -s\"",
-    "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "test": "cross-env NODE_ENV=test babel-node test",
-    "test:dev": "cross-env NODE_ENV=test babel-node test | tap-nyan",
-    "test:cov": "cross-env NODE_ENV=test babel-node node_modules/isparta/bin/isparta cover --report text --report html --report lcov --dir reports/coverage test",
-    "test:e2e": "cross-env NODE_ENV=development nightwatch-autorun",
-    "lint": "eslint --cache .",
-    "precommit": "npm run lint -s",
-    "prepush": "npm run test -s",
-    "postversion": "git push --follow-tags"
+    "start": "p-s",
+    "test": "npm start test",
+    "precommit": "npm start precommit",
+    "prepush": "npm start prepush",
+    "postversion": "npm start postversion"
   },
   "repository": {
     "type": "git",
@@ -38,10 +28,7 @@
     "url": "https://github.com/nkbt/react-component-template/issues"
   },
   "homepage": "https://github.com/nkbt/react-component-template",
-  "peerDependencies": {
-    "react": "^0.14 || ^15"
-  },
-  "devDependencies": {
+  "dependencies": {
     "babel-cli": "6.8.0",
     "babel-core": "6.8.0",
     "babel-eslint": "6.0.4",
@@ -56,15 +43,16 @@
     "eslint": "2.10.2",
     "eslint-loader": "1.3.0",
     "eslint-plugin-react": "5.1.1",
+    "gh-pages": "0.11.0",
     "glob": "7.0.3",
     "html-webpack-plugin": "2.17.0",
     "husky": "0.11.4",
     "isparta": "4.0.0",
     "json-loader": "0.5.4",
     "nightwatch-autorun": "2.3.1",
-    "parallelshell": "2.0.0",
-    "react-dom": "15.0.2",
+    "p-s": "0.7.1",
     "react": "15.0.2",
+    "react-dom": "15.0.2",
     "rimraf": "2.5.2",
     "sinon": "1.17.4",
     "style-loader": "0.13.1",

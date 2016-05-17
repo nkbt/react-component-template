@@ -4,19 +4,26 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const COMPONENT_NAME = process.env.npm_package_config_component;
+const pathTo = path.join.bind(null, process.cwd());
+
+
+if (!COMPONENT_NAME) {
+  throw Error('<package.json>.config.component name is required');
+}
 
 
 const loaders = [
   {
     test: /\.css$/,
     loader: 'style!css?sourceMap&modules&localIdentName=[path][name]---[local]',
-    include: [path.resolve('src/example')]
+    include: [pathTo('src', 'example')]
   },
   {test: /\.json$/, loader: 'json'},
   {
     test: /\.js$/,
     loader: 'babel',
-    include: [path.resolve('src')]
+    include: [pathTo('src')]
   }
 ];
 
@@ -36,10 +43,10 @@ const development = {
   devtool: '#source-map',
 
   entry: [
-    './src/example/Example.js',
+    pathTo('src', 'example', 'Example.js'),
     'webpack-dev-server/client?http://localhost:8080'
   ],
-  output: {filename: 'bundle.js', path: path.resolve('example')},
+  output: {filename: 'bundle.js', path: pathTo('example')},
   plugins: [
     new HtmlWebpackPlugin(),
     definePlugin
@@ -47,7 +54,7 @@ const development = {
   module: {
     loaders,
     preLoaders: [
-      {test: /\.js$/, loader: 'eslint', include: [path.resolve('src')]}
+      {test: /\.js$/, loader: 'eslint', include: [pathTo('src')]}
     ]
   },
   resolve,
@@ -65,8 +72,8 @@ const development = {
 
 const ghPages = {
   devtool: '#source-map',
-  entry: './src/example/Example.js',
-  output: {filename: 'bundle.js', path: path.resolve('example')},
+  entry: pathTo('src', 'example', 'Example.js'),
+  output: {filename: 'bundle.js', path: pathTo('example')},
   plugins: [new HtmlWebpackPlugin(), definePlugin],
   module: {loaders},
   resolve,
@@ -76,11 +83,11 @@ const ghPages = {
 
 const dist = {
   devtool: '#source-map',
-  entry: './src/index.js',
+  entry: pathTo('src', 'index.js'),
   output: {
-    filename: `${require('./package.json').name}.js`,
-    path: path.resolve('build'),
-    library: 'ReactComponentTemplate',
+    filename: `${require(pathTo('package.json')).name}.js`,
+    path: pathTo('build'),
+    library: COMPONENT_NAME,
     libraryTarget: 'umd'
   },
   plugins: [definePlugin],
@@ -95,11 +102,11 @@ const dist = {
 
 const min = {
   devtool: '#source-map',
-  entry: './src/index.js',
+  entry: pathTo('src', 'index.js'),
   output: {
-    filename: `${require('./package.json').name}.min.js`,
-    path: path.resolve('build'),
-    library: 'ReactComponentTemplate',
+    filename: `${require(pathTo('package.json')).name}.min.js`,
+    path: pathTo('build'),
+    library: COMPONENT_NAME,
     libraryTarget: 'umd'
   },
   plugins: [

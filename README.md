@@ -29,20 +29,51 @@ Developing and publishing multiple React components requires a lot of work to ke
 
 ## Usage
 
-1. Add as remote
+1. Install
 
   ```sh
-  git remote add template git@github.com:nkbt/react-component-template.git
+  npm install --save-dev p-s react-component-template
   ```
 
-2. Merge to existing repo
+2. Set npm scripts in `package.json` and set component name
 
-  ```sh
-  git merge --no-ff template/master
+  ```json
+  {
+    "config": {
+      "component": "ReactComponentTemplate"
+    },
+    "scripts": {
+      "start": "p-s --config node_modules/react-component-template/package-scripts.js -s",
+      "test": "npm start test",
+      "precommit": "npm start precommit",
+      "prepush": "npm start prepush",
+      "postversion": "npm start postversion",
+      "prepublish": "npm start prepublish"
+    }
+  }
   ```
 
-3. Fix conflicts
-4. If update needed, repeat
+3. Create `webpack.config.js`
+
+  ```js
+  'use strict';
+
+  module.exports = require('react-component-template/webpack.config');
+  ```
+
+4. Create `.eslintrc`
+
+  ```json
+  {
+    "extends": "./node_modules/react-component-template/.eslintrc"
+  }
+  ```
+
+5. Other files
+
+  ```js
+  // TODO: better create generator
+  ```
 
 
 # Template-based component features
@@ -93,11 +124,11 @@ then include as
 ## Demo
 
 Publishing on `gh-pages`:
-- do a build
-- allow `/example` in `.gitignore`
-- commit and push to `gh-pages`
+```sh
+npm start gh-pages
+```
 
-[http://nkbt.github.io/react-component-template/example](http://nkbt.github.io/react-component-template/example)
+[http://nkbt.github.io/react-component-template](http://nkbt.github.io/react-component-template)
 
 ## Codepen demo
 
@@ -140,13 +171,13 @@ ReactDOM.render(<App />, appRoot);
 Currently is being developed and tested with the latest stable `Node 5` on `OSX` and `Windows`.
 Should be ok with Node 4, but not guaranteed.
 
-To run example covering all `ReactComponentTemplate` features, use `npm start`, which will compile `src/example/Example.js`
+To run example covering all `ReactComponentTemplate` features, use `npm start dev`, which will compile `src/example/Example.js`
 
 ```bash
 git clone git@github.com:nkbt/react-component-template.git
 cd react-component-template
 npm install
-npm start
+npm start dev
 
 # then
 open http://localhost:8080
@@ -155,13 +186,14 @@ open http://localhost:8080
 ## Tests
 
 ```bash
-npm test
-
-# to run tests in watch mode for development
-npm run test:dev
+# to run tests
+npm start test
 
 # to generate test coverage (./reports/coverage)
-npm run test:cov
+npm start test.cov
+
+# to run end-to-end tests
+npm start test.e2e
 ```
 
 ## License

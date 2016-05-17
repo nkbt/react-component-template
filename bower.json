@@ -2,12 +2,7 @@
   "name": "react-component-template",
   "version": "0.0.0",
   "description": "React component",
-  "main": [
-    "build/react-component-template.js",
-    "build/react-component-template.js.map",
-    "build/react-component-template.min.js",
-    "build/react-component-template.min.js.map"
-  ],
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/nkbt/react-component-template.git"
@@ -23,7 +18,7 @@
   "license": "MIT",
   "homepage": "https://github.com/nkbt/react-component-template",
   "dependencies": {
-    "react": "^0.14"
+    "react": "^0.14 || ^15"
   },
   "ignore": [
     "**/.*",
