@@ -4,12 +4,12 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const COMPONENT_NAME = process.env.COMPONENT_NAME;
+const COMPONENT_NAME = process.env.npm_package_config_component;
 const pathTo = path.join.bind(null, process.cwd());
 
 
 if (!COMPONENT_NAME) {
-  throw Error('COMPONENT_NAME is required');
+  throw Error('<package.json>.config.component name is required');
 }
 
 

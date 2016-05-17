@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "description": "React component",
   "main": "lib/index.js",
+  "config": {
+    "component": "ReactComponentTemplate"
+  },
   "scripts": {
-    "start": "cross-env COMPONENT_NAME=ReactComponentTemplate p-s",
+    "start": "p-s",
     "test": "npm start test",
     "precommit": "npm start precommit",
     "prepush": "npm start prepush",

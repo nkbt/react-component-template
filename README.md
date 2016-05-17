@@ -35,12 +35,15 @@ Developing and publishing multiple React components requires a lot of work to ke
   npm install --save-dev p-s react-component-template
   ```
 
-2. Set npm scripts in `package.json`
+2. Set npm scripts in `package.json` and set component name
 
   ```json
   {
+    "config": {
+      "component": "ReactComponentTemplate"
+    },
     "scripts": {
-      "start": "COMPONENT_NAME=<ProjectName> p-s --config node_modules/react-component-template/package-scripts.js -s",
+      "start": "p-s --config node_modules/react-component-template/package-scripts.js -s",
       "test": "npm start test",
       "precommit": "npm start precommit",
       "prepush": "npm start prepush",
