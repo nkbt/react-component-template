@@ -15,7 +15,7 @@ exports.scripts = {
     dist: 'cross-env NODE_ENV=production BUILD=dist webpack',
     min: 'cross-env NODE_ENV=production BUILD=min webpack'
   },
-  prepublish: 'p-s --parallel build:lib,build:dist,build:min',
+  prepublish: 'p-s --parallel build.lib,build.dist,build.min',
   test: {
     default: 'cross-env NODE_ENV=test babel-node test',
     dev: 'p-s test | tap-nyan',
