@@ -43,7 +43,7 @@ Developing and publishing multiple React components requires a lot of work to ke
       "component": "ReactComponentTemplate"
     },
     "scripts": {
-      "start": "p-s --config node_modules/react-component-template/package-scripts.js -s",
+      "start": "p-s --config react-component-template/package-scripts -s",
       "test": "npm start test",
       "precommit": "npm start precommit",
       "prepush": "npm start prepush",
