@@ -43,7 +43,7 @@ Developing and publishing multiple React components requires a lot of work to ke
       "component": "ReactComponentTemplate"
     },
     "scripts": {
-      "start": "p-s --config node_modules/react-component-template/package-scripts.js -s",
+      "start": "p-s --config react-component-template/package-scripts -s",
       "test": "npm start test",
       "precommit": "npm start precommit",
       "prepush": "npm start prepush",
@@ -71,130 +71,21 @@ Developing and publishing multiple React components requires a lot of work to ke
 
 5. Other files
 
-  ```js
-  // TODO: better create generator
+  There is a `react-component-template` scaffold generator, install it:
+  ```sh
+  npm install -g cf-react-component-template
   ```
+  and answer some questions, for example:
+  ```sh
+  cf-react-component-template
 
-
-# Template-based component features
-
-## Installation
-
-Considering the name is `react-component-template` and it is published to NPM
-
-### NPM
-
-```sh
-npm install --save react react-component-template
-```
-
-Don't forget to manually install peer dependencies (`react`) if you use npm@3.
-
-
-### Bower:
-```sh
-bower install --save https://npmcdn.com/react-component-template/bower.zip
-```
-
-or in `bower.json`
-
-```json
-{
-  "dependencies": {
-    "react-component-template": "https://npmcdn.com/react-component-template/bower.zip"
-  }
-}
-```
-
-then include as
-```html
-<script src="bower_components/react/react.js"></script>
-<script src="bower_components/react-component-template/build/react-component-template.js"></script>
-```
-
-
-### 1998 Script Tag:
-```html
-<script src="https://npmcdn.com/react/dist/react.js"></script>
-<script src="https://npmcdn.com/react-component-template/build/react-component-template.js"></script>
-(Module exposed as `ReactComponentTemplate`)
-```
-
-
-## Demo
-
-Publishing on `gh-pages`:
-```sh
-npm start gh-pages
-```
-
-[http://nkbt.github.io/react-component-template](http://nkbt.github.io/react-component-template)
-
-## Codepen demo
-
-```js
-// TODO
-```
-
-
-## Usage
-```js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactComponentTemplate from 'react-component-template';
-
-const App = React.createClass({
-  render() {
-    return (
-      <div>
-        <ReactComponentTemplate some="prop" />
-      </div>
-    );
-  }
-});
-
-const appRoot = document.createElement('div');
-document.body.appendChild(appRoot);
-ReactDOM.render(<App />, appRoot);
-```
-
-## Options
-
-
-```js
-// TODO: list component props
-```
-
-
-## Development and testing
-
-Currently is being developed and tested with the latest stable `Node 5` on `OSX` and `Windows`.
-Should be ok with Node 4, but not guaranteed.
-
-To run example covering all `ReactComponentTemplate` features, use `npm start dev`, which will compile `src/example/Example.js`
-
-```bash
-git clone git@github.com:nkbt/react-component-template.git
-cd react-component-template
-npm install
-npm start dev
-
-# then
-open http://localhost:8080
-```
-
-## Tests
-
-```bash
-# to run tests
-npm start test
-
-# to generate test coverage (./reports/coverage)
-npm start test.cov
-
-# to run end-to-end tests
-npm start test.e2e
-```
+  Your name: Nik Butenko
+  Your email (will be publicly available, optional): nik@butenko.me
+  Your GitHub public username: nkbt
+  Package name: my-awesome-react-lib
+  Global package name (CamelCased): MyAwesomeReactLib
+  Package description: My awesome React library
+  ```
 
 ## License
 
