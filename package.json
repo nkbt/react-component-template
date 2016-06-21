@@ -44,7 +44,7 @@
     "eslint-loader": "1.3.0",
     "eslint-plugin-react": "5.1.1",
     "gh-pages": "0.11.0",
-    "glob": "7.0.3",
+    "glob": "7.0.4",
     "html-webpack-plugin": "2.21.0",
     "husky": "0.11.4",
     "isparta": "4.0.0",
