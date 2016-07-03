@@ -22,8 +22,8 @@ exports.scripts = {
   test: {
     default: `cross-env NODE_ENV=test babel-node ${pathTo('test')}`,
     dev: 'npm start -- test | tap-nyan',
-    cov: 'cross-env NODE_ENV=test' +
-    '     babel-node node_modules/.bin/babel-istanbul cover' +
+    cov: 'cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1' +
+    '     babel-istanbul cover --no-default-excludes -x **/node_modules/**' +
     `     --report text --report html --report lcov --dir reports/coverage ${pathTo('test')}`,
     e2e: 'cross-env NODE_ENV=development nightwatch-autorun'
   },
@@ -40,7 +40,8 @@ exports.scripts = {
       'NODE_ENV=test babel-node test > ${CIRCLE_ARTIFACTS}/test.log',
       'cat ${CIRCLE_ARTIFACTS}/test.log | tap-xunit > ${CIRCLE_TEST_REPORTS}/test.xml'
     ].join(' && '),
-    cov: 'NODE_ENV=test babel-node node_modules/.bin/babel-istanbul cover ' +
+    cov: 'NODE_ENV=test BABEL_DISABLE_CACHE=1 babel-istanbul cover' +
+    '     --no-default-excludes -x **/node_modules/**' +
     '     --report text --report lcov --verbose --dir ${CIRCLE_ARTIFACTS}/coverage test/index.js',
     e2e: 'REPORT_DIR=${CIRCLE_TEST_REPORTS} LOG_DIR=${CIRCLE_ARTIFACTS}' +
     '     NODE_ENV=development nightwatch-autorun',
