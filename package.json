@@ -3,6 +3,9 @@
   "version": "0.1.3",
   "description": "React component",
   "main": "lib/index.js",
+  "bin": {
+    "react-component-template": "cli.js"
+  },
   "config": {
     "component": "ReactComponentTemplate"
   },
@@ -29,6 +32,40 @@
   },
   "homepage": "https://github.com/nkbt/react-component-template",
   "dependencies": {
+    "babel-cli": "6",
+    "babel-core": "6",
+    "babel-eslint": "6",
+    "babel-istanbul": "0.11",
+    "babel-loader": "6",
+    "babel-plugin-transform-object-rest-spread": "6",
+    "babel-preset-es2015": "6",
+    "babel-preset-react": "6",
+    "codecov": "1",
+    "cross-env": "1",
+    "css-loader": "0.23",
+    "css-modules-require-hook": "4",
+    "eslint": "3",
+    "eslint-loader": "1",
+    "eslint-plugin-react": "5",
+    "gh-pages": "0.11",
+    "glob": "7",
+    "html-webpack-plugin": "2",
+    "husky": "0.11",
+    "json-loader": "0.5",
+    "nightwatch-autorun": "3",
+    "p-s": "1",
+    "react": "15",
+    "react-dom": "15",
+    "rimraf": "2",
+    "sinon": "1",
+    "style-loader": "0.13",
+    "tap-nyan": "0.0",
+    "tap-xunit": "1",
+    "tape": "4",
+    "webpack": "1",
+    "webpack-dev-server": "1"
+  },
+  "devDependencies": {
     "babel-cli": "6.10.1",
     "babel-core": "6.10.4",
     "babel-eslint": "6.1.0",
@@ -61,5 +98,15 @@
     "tape": "4.6.0",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1"
-  }
+  },
+  "files": [
+    "/test/index.js",
+    "/test-e2e/Smoketest.js",
+    "/.eslintrc",
+    "/cli.js",
+    "/nightwatch.json",
+    "/package-scripts.js",
+    "/README.md",
+    "/webpack.config.js"
+  ]
 }
