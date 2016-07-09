@@ -1,6 +1,10 @@
-import glob from 'glob';
+require('css-modules-require-hook')({
+  generateScopedName: '[name]__[local]'
+});
 
-import cssHook from 'css-modules-require-hook';
-cssHook({generateScopedName: '[name]__[local]'});
-
-glob.sync('**/*-test.js', {realpath: true, cwd: __dirname}).forEach(require);
+require('glob')
+  .sync('**/*-test.js', {
+    realpath: true,
+    cwd: require('path').resolve(process.cwd(), 'test')
+  })
+  .forEach(require);
