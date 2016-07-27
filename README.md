@@ -32,7 +32,7 @@ Developing and publishing multiple React components requires a lot of work to ke
 1. Install
 
   ```sh
-  npm install --save-dev p-s react-component-template
+  npm install --save-dev react-component-template
   ```
 
 2. Set npm scripts in `package.json` and set component name
@@ -43,7 +43,7 @@ Developing and publishing multiple React components requires a lot of work to ke
       "component": "ReactComponentTemplate"
     },
     "scripts": {
-      "start": "p-s --config react-component-template/package-scripts -s",
+      "start": "react-component-template",
       "test": "npm start test",
       "precommit": "npm start precommit",
       "prepush": "npm start prepush",
