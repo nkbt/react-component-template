@@ -52,7 +52,7 @@
     "html-webpack-plugin": "2",
     "husky": "0.11",
     "json-loader": "0.5",
-    "nightwatch-autorun": "3.0.1",
+    "nightwatch-autorun": "3.0.2",
     "p-s": "2.1.0",
     "react": "15.3.0",
     "react-dom": "15.3.0",
