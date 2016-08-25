@@ -33,7 +33,7 @@
   "homepage": "https://github.com/nkbt/react-component-template",
   "dependencies": {
     "babel-cli": "6",
-    "babel-core": "6",
+    "babel-core": "6.13.2",
     "babel-eslint": "6.1.2",
     "babel-istanbul": "0.11",
     "babel-loader": "6",
