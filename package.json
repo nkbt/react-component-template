@@ -53,7 +53,7 @@
     "husky": "0.11",
     "json-loader": "0.5",
     "nightwatch-autorun": "3.0.3",
-    "p-s": "2.4.1",
+    "p-s": "2.4.4",
     "react": "15.3.0",
     "react-dom": "15.3.1",
     "rimraf": "2",
