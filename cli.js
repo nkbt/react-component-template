@@ -2,7 +2,7 @@
 
 
 const config = require.resolve('react-component-template/package-scripts');
-const ps = require.resolve('p-s/dist/bin/p-s');
+const ps = require.resolve('p-s/dist/bin/nps');
 
 
 require('child_process')
