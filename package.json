@@ -1,6 +1,6 @@
 {
   "name": "react-component-template",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "React component",
   "main": "lib/index.js",
   "bin": {
