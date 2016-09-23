@@ -50,7 +50,7 @@
     "gh-pages": "0.11.0",
     "glob": "7.1.0",
     "html-webpack-plugin": "2.22.0",
-    "husky": "0.11.7",
+    "husky": "0.11.8",
     "json-loader": "0.5.4",
     "nightwatch-autorun": "3.0.3",
     "p-s": "3.0.1",
