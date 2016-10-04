@@ -43,7 +43,7 @@
     "codecov": "1.0.1",
     "cross-env": "3.0.0",
     "css-loader": "0.25.0",
-    "css-modules-require-hook": "4.0.3",
+    "css-modules-require-hook": "4.0.5",
     "eslint": "3.7.1",
     "eslint-loader": "1.5.0",
     "eslint-plugin-react": "6.2.2",
