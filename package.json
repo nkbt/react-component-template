@@ -44,7 +44,7 @@
     "cross-env": "3.0.0",
     "css-loader": "0.25.0",
     "css-modules-require-hook": "4.0.3",
-    "eslint": "3.5.0",
+    "eslint": "3.7.1",
     "eslint-loader": "1.5.0",
     "eslint-plugin-react": "6.2.2",
     "gh-pages": "0.11.0",
