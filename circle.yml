@@ -13,6 +13,7 @@ dependencies:
     - "~/.yarn-cache"
   override:
     - yarn install
+    - node ./node_modules/selenium-standalone/bin/selenium-standalone install
 
 test:
   override:
