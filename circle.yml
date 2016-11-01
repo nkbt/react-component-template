@@ -2,6 +2,12 @@ machine:
   node:
     version: v6.1.0
 
+dependencies:
+  pre:
+    - npm install -g yarn
+  override:
+    - yarn install
+
 test:
   override:
     - npm start ci.lint
