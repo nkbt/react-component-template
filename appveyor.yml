@@ -1,7 +1,5 @@
 install:
-  - choco install yarn
-  - refreshenv
-  - yarn install
+  - npm install
 
 cache:
  - "%LOCALAPPDATA%/Yarn"
@@ -14,4 +12,5 @@ skip_branch_with_pr: true
 
 test_script:
   - node --version
-  - yarn test
+  - npm --version
+  - npm test
