@@ -4,6 +4,20 @@
     "react"
   ],
   "plugins": [
-    "transform-object-rest-spread"
-  ]
+    "transform-object-rest-spread",
+    "transform-class-properties"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "transform-react-remove-prop-types",
+          {
+            "mode": "remove",
+            "removeImport": true
+          }
+        ]
+      ]
+    }
+  }
 }

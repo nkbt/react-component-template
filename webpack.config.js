@@ -16,26 +16,23 @@ if (!COMPONENT_NAME) {
 const loaders = [
   {
     test: /\.css$/,
-    loader: 'style!css?sourceMap&modules&localIdentName=[path][name]---[local]',
+    loader: 'style-loader!css-loader?sourceMap&modules&localIdentName=[path][name]---[local]',
     include: [pathTo('src', 'example')]
   },
-  {test: /\.json$/, loader: 'json'},
   {
     test: /\.js$/,
-    loader: 'babel',
+    loader: 'babel-loader',
     include: [pathTo('src')]
   }
 ];
 
 
 const definePlugin = new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-  }
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
 });
 
 
-const resolve = {extensions: ['', '.js']};
+const resolve = {};
 const stats = {colors: true};
 
 
@@ -108,11 +105,7 @@ const min = {
   },
   plugins: [
     definePlugin,
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
-    })
+    new webpack.optimize.UglifyJsPlugin()
   ],
   module: {loaders},
   resolve,
