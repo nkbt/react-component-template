@@ -28,7 +28,8 @@ const loaders = [
 
 
 const definePlugin = new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+  'process.env.npm_package_name': JSON.stringify(process.env.npm_package_name)
 });
 
 
