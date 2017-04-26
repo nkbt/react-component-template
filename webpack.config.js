@@ -52,10 +52,7 @@ const development = {
     definePlugin
   ],
   module: {
-    loaders,
-    preLoaders: [
-      {test: /\.js$/, loader: 'eslint', include: [pathTo('src')]}
-    ]
+    loaders
   },
   resolve,
   stats,
