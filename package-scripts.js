@@ -15,13 +15,13 @@ exports.scripts = {
     ].join(' && '),
     lib: 'cross-env NODE_ENV=production' +
     `     babel ${pathTo('src')} --out-dir ${pathTo('lib')}` +
-    `     --source-maps --ignore ${pathTo('src', 'example')}`,
+    `     --ignore ${pathTo('src', 'example')}`,
     ghPages: 'cross-env NODE_ENV=production BUILD=ghPages webpack',
     dist: 'cross-env NODE_ENV=production BUILD=dist webpack',
     min: 'cross-env NODE_ENV=production BUILD=min webpack'
   },
 
-  lint: `eslint --cache ${pathTo('.')}`,
+  lint: `eslint ${pathTo('.')}`,
 
   test: {
     default: `cross-env NODE_ENV=test babel-node ${pathTo('test')}`,
@@ -34,16 +34,8 @@ exports.scripts = {
 
   // CircleCI scripts
   ci: {
-    lint: [
-      `eslint ${pathTo('.')} --format tap > \${CIRCLE_ARTIFACTS}/lint.log`,
-      'cat ${CIRCLE_ARTIFACTS}/lint.log',
-      'cat ${CIRCLE_ARTIFACTS}/lint.log | tap-xunit > ${CIRCLE_TEST_REPORTS}/lint.xml'
-    ].join(' && '),
-    test: [
-      `NODE_ENV=test babel-node ${pathTo('test')} > \${CIRCLE_ARTIFACTS}/test.log`,
-      'cat ${CIRCLE_ARTIFACTS}/test.log',
-      'cat ${CIRCLE_ARTIFACTS}/test.log | tap-xunit > ${CIRCLE_TEST_REPORTS}/test.xml'
-    ].join(' && '),
+    lint: `eslint ${pathTo('.')}`,
+    test: `NODE_ENV=test babel-node ${pathTo('test')}`,
     cov: 'NODE_ENV=test' +
     '     babel-node node_modules/.bin/babel-istanbul cover' +
     '     --report text --report lcov --verbose --dir ${CIRCLE_ARTIFACTS}/coverage' +
